@@ -15,9 +15,25 @@ Como ejercicio adicional y completamente opcional, al terminar de resolver este 
 */
 
 function nFactorial(n) {
+  //Esteblecemos nuestra condición de corte:
+  if(n === 0 || n === 1){
+    return 1;
+  }else if(n < 0){
+    return 0;
+  }
+  //Retornammos la función y esperamos que nos devuelva un resultado para resolver n!
+  return n * nFactorial(n - 1)
 }
 
 function nFibonacci(n) {
+  //Condición de corte: (Caso Base)
+  if(n === 1){
+    return 1;
+  }else if (n === 0){
+    return 0;
+  }
+  //retornamos llamando a recursion con el calculo para calcular el Fibonacci de n:
+  return nFibonacci(n - 1) + nFibonacci(n - 2)
 }
 
 /*
@@ -30,7 +46,21 @@ Pueden utilizar class o función constructora.
 */
 
 function Queue() {
+  this.array = [];
 
+}
+Queue.prototype.enqueue = function(elemento){
+  this.array.push(elemento);
+}
+Queue.prototype.dequeue = function(){
+  if(this.array.length > 0){
+    return this.array.shift();
+  }else if(this.array.length === 0){
+    return undefined;
+  }
+}
+Queue.prototype.size = function(){
+  return this.array.length;
 }
 
 // No modifiquen nada debajo de esta linea
