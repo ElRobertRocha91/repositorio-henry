@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
+import { addMovieFavorite, getMovies } from "../../actions";
 import './Buscador.css';
 
 
@@ -17,6 +18,7 @@ export class Buscador extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
+    this.props.getMovies(this.state.title)
   }
 
   render() {
@@ -45,4 +47,21 @@ export class Buscador extends Component {
   }
 }
 
-export default Buscador;
+function mapStateToProps(state) {
+  return {
+    movies: state.moviesLoaded
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    addMovieFavorite: movie =>
+    dispatch(addMovieFavorite(movie)),
+    getMovies: title => dispatch(getMovies(title))
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+) (Buscador);
