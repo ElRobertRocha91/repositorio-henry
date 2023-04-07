@@ -7,13 +7,6 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action){
-    if(action.type === GET_MOVIES){
-        return {
-            ...state,
-            // moviesLoaded: action.payload.Search
-            moviesLoaded: [...state.moviesLoaded, ...action.payload.Search]
-        }
-    }
     if(action.type === GET_DETAIL){
         return {
             ...state,
@@ -26,10 +19,17 @@ function rootReducer(state = initialState, action){
             moviesFavourites: state.moviesFavourites.concat(action.payload)
         }
     }
+    if(action.type === GET_MOVIES){
+        return {
+            ...state,
+            // moviesLoaded: action.payload.Search
+            moviesLoaded: [...state.moviesLoaded, ...action.payload.Search]
+        }
+    }
     if(action.type === REMOVE_FAVORITE){
         return {
             ...state,
-            moviesFavourites: state.moviesFavourites.filter(movie => movie.imdbID !== action.payload)
+            moviesFavourites: state.moviesFavourites.filter((movie) => movie.id !== action.payload)
         }
     }
     return state;
