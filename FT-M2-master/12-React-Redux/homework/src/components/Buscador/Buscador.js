@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { addMovieFavorite, getMovies } from "../../actions";
 import './Buscador.css';
 
-
+//This.props ? {getMovies, movieLoaded}
 
 export class Buscador extends Component {
   constructor(props) {
@@ -18,7 +18,10 @@ export class Buscador extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    this.props.getMovies(this.state.title)
+    //Hacer la busqueda a la API por el nombre correspondiente
+    this.props.getMovies(this.state.title);
+    //Reseteamos el buscador para que vuelva a estar vacio
+    this.setState({title: ""});
   }
 
   render() {
@@ -41,6 +44,14 @@ export class Buscador extends Component {
         </form>
         <ul>
          {/* Aqui tienes que escribir tu codigo para mostrar la lista de peliculas */}
+         {
+          this.props.movies && this.props.movies.map(movie => movie && 
+            <li key={movie.imdbID}>
+              <Link to={`/movie/${movie.imdbID}`}>{movie.Title}</Link>
+              <button onClick={() => this.props.addMovieFavorite({title: movie.Title, id: movie.imdbID}) }>ADD TO FAVORITE</button>
+            </li>
+            )
+         }
         </ul>
       </div>
     );
