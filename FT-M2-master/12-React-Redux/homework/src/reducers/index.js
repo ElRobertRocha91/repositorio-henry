@@ -10,7 +10,8 @@ function rootReducer(state = initialState, action){
     if(action.type === GET_MOVIES){
         return {
             ...state,
-            moviesLoaded: action.payload.Search
+            // moviesLoaded: action.payload.Search
+            moviesLoaded: [...state.moviesLoaded, ...action.payload.Search]
         }
     }
     if(action.type === GET_DETAIL){
