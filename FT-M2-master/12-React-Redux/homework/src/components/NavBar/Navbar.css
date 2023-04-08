@@ -1,4 +1,39 @@
-.navbar {
+:root {
+    --rojo: #E50914;
+    --fondo: #141414;
+}
+
+.contenedor {
+    width: 90%;
+    margin: auto;
+}
+
+header .contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logotipo {
+    font-family: 'Bebas Neue', cursive;
+    font-weight: normal;
+    color: var(--rojo);
+    font-size: 40px;
+    cursor: pointer;
+}
+
+header nav a {
+    color: #AAA;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.list-item a:hover,
+.list-item a.active {
+    color: #FFF;
+} 
+
+/* .navbar {
     height: 56px;
     width: 100%;
     top: 0;
@@ -44,4 +79,4 @@
 .list-item a.active {
     background-color: #808080;
     color: white;
-}
+} */
