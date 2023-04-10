@@ -28,10 +28,10 @@ export class Buscador extends Component {
     const { title } = this.state;
     return (
       <div>
-        <h2>Buscador</h2>
+        {/* <h2>Buscador</h2> */}
         <form className="form-container" onSubmit={(e) => this.handleSubmit(e)}>
           <div>
-            <label className="label" htmlFor="title">Película: </label>
+            <label className="label" htmlFor="title">Movie: </label>
             <input
               type="text"
               id="title"
@@ -40,16 +40,25 @@ export class Buscador extends Component {
               onChange={(e) => this.handleChange(e)}
             />
           </div>
-          <button type="submit">BUSCAR</button>
+          <button type="submit">SEARCH</button>
         </form>
-        <ul>
+        <ul className="list">
          {/* Aqui tienes que escribir tu codigo para mostrar la lista de peliculas */}
          {
           this.props.movies && this.props.movies.map(movie => movie && 
-            <li key={movie.imdbID}>
+            <li key={movie.imdbID} className="lista">
+              <div className="image">
+              <img src={movie.Poster} alt={movie.Title}/>
+              <div className="text">
+              <div>
               <Link to={`/movie/${movie.imdbID}`}>{movie.Title}</Link>
+              </div>
+              <p>Year: {movie.Year}</p>
               <button onClick={() => this.props.addMovieFavorite({title: movie.Title, id: movie.imdbID}) }>ADD TO FAVORITE</button>
+              </div>
+              </div>
             </li>
+          
             )
          }
         </ul>
