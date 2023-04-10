@@ -6,6 +6,7 @@
 .contenedor {
     width: 90%;
     margin: auto;
+    border-bottom: 1px solid var(--rojo);
 }
 
 header .contenedor {
@@ -20,6 +21,11 @@ header .logotipo {
     color: var(--rojo);
     font-size: 40px;
     cursor: pointer;
+}
+
+header h2:hover {
+    text-shadow: 0 0 1rem rgba(240, 6, 6, 0.76), 0 0 1rem rgba(240, 6, 6, 0.76);
+    transition: 1s;
 }
 
 header nav a {
