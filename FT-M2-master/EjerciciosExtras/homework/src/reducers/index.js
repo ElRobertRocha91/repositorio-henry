@@ -9,6 +9,27 @@ const initialState = {
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
+    //Creamos los 4 casos para cada una de las action, nuestras 4 reducer:
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        users: action.payload,
+      };
+    case GET_ALL_POSTS:
+      return {
+        ...state,
+        posts: action.payload,
+      };
+    case GET_ALL_USERS_POST:
+      return {
+        ...state,
+        userPosts: action.payload,
+      };
+    case GET_ALL_COMMENTS_POST:
+      return {
+        ...state,
+        commentsPost: action.payload,
+      };
     default:
       return state;
   }
